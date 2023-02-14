@@ -1,0 +1,11 @@
+This code is for a multithreaded server in C. It uses the socket API and the pthread library to handle incoming connections from clients.
+
+    The accept function is called to wait for incoming connections on a socket identified by the socket_desc descriptor. When a client connects, the accept function returns a new socket descriptor for communication with the client. The client structure is filled with the client's address information.
+
+    For each new connection, a new thread is created using pthread_create. The thread function connection_handler is passed the new_sock parameter, which is a pointer to the newly created socket descriptor for communication with the client.
+
+    The malloc function is used to allocate memory for the new_sock variable. This memory is then passed to the thread function as a parameter.
+
+    The pthread_create function returns zero on success and a non-zero value on failure. If it fails, an error message is printed and the program exits.
+
+    The main thread continues to wait for new connections and repeat the process of creating a new thread for each connection.
