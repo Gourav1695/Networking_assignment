@@ -48,7 +48,13 @@ while (true) {
         ttl_val--;
         *((uint8_t*)(recv_buf + sizeof(uint16_t) + sizeof(uint32_t))) = ttl_val;
         sendto(sockfd, recv_buf, sizeof(recv_buf), 0, (struct sockaddr*)&client_addr, sizeof(client_addr));
+        
     }
+    
+    /*This code snippet receives a packet from the socket with the file descriptor sockfd using the recvfrom function. The received data is stored in the buffer recv_buf, which has a size of 1024 bytes. The recvfrom function also populates the client_addr structure with the source address and port of the client that sent the packet, and the length of the structure is stored in addr_len.
+
+    The code then extracts the TTL (time-to-live) value from the received packet. If the TTL value is greater than 0, it decrements the TTL value by 1 and updates the TTL field in the packet with the new value. Finally, it forwards the packet back to the client using the sendto function, sending the packet to the address and port specified in the client_addr structure.
+*/
 }
 
 // Close the socket
